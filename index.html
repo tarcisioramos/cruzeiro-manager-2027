@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cruzeiro Manager 2027</title>
+<style>
+:root{--bg:#071426;--panel:#10243e;--panel2:#162e4c;--blue:#1765c1;--gold:#e5bd55;--white:#f3f6fc;--muted:#9babc0;--green:#39c98a;--red:#ed6875}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--white);font-family:Arial,sans-serif}
+header{padding:22px 28px;background:linear-gradient(110deg,#09264a,#123f79);border-bottom:2px solid var(--gold);display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
+.brand{font-size:25px;font-weight:900;letter-spacing:1px}.brand span{color:var(--gold)}.sub{color:#c5d4e8;font-size:11px;margin-top:5px;letter-spacing:2px}
+.pill{border:1px solid #5279a6;border-radius:20px;padding:8px 13px;font-size:12px}
+nav{display:flex;gap:7px;padding:13px 20px;background:#0b1b30;overflow-x:auto}
+nav button{background:transparent;color:#b9c9dc;border:1px solid #29415e;padding:11px 15px;border-radius:8px;white-space:nowrap;cursor:pointer}
+nav button.active,nav button:hover{background:var(--blue);color:white;border-color:var(--blue)}
+main{max-width:1450px;margin:auto;padding:25px}
+h1{font-size:25px;margin:0 0 8px}h2{font-size:18px;margin:0 0 15px}
+.muted{color:var(--muted);font-size:13px;line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:22px 0}
+.card{background:var(--panel);border:1px solid #233c5b;border-radius:12px;padding:18px}
+.metric{font-size:25px;font-weight:bold;margin:10px 0}.green{color:var(--green)}.gold{color:var(--gold)}
+.layout{display:grid;grid-template-columns:1.4fr 1fr;gap:15px}
+button,.btn{cursor:pointer}.primary{background:var(--blue);color:white;border:0;padding:11px 16px;border-radius:7px;font-weight:bold}
+.secondary{background:#243d5c;color:white;border:1px solid #3c587a;padding:10px 14px;border-radius:7px}
+.danger{background:#612e3b;color:white;border:0;padding:10px 14px;border-radius:7px}
+input,select,textarea{width:100%;padding:12px;margin:6px 0 14px;background:#091a2d;color:white;border:1px solid #34506e;border-radius:7px}
+label{font-size:12px;color:#b8c9dc}table{width:100%;border-collapse:collapse;font-size:13px}
+td,th{text-align:left;padding:12px 8px;border-bottom:1px solid #29415e}th{color:var(--gold)}
+.section{display:none}.section.active{display:block}
+.tag{font-size:11px;border-radius:20px;padding:5px 9px;background:#243e5d;color:#dceaff}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.progress{height:8px;background:#263d58;border-radius:10px;overflow:hidden;margin:10px 0}
+.progress div{height:100%;background:var(--green)}
+footer{padding:20px;text-align:center;color:#71859f;font-size:11px}
+.notice{padding:12px;border-left:3px solid var(--gold);background:#192c43;border-radius:5px;margin:15px 0;font-size:13px;line-height:1.6}
+.player{display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:1px solid #29415e;padding:12px 0}
+@media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}.layout{grid-template-columns:1fr}}
+@media(max-width:500px){main{padding:15px}.grid{grid-template-columns:1fr 1fr}.metric{font-size:20px}header{padding:17px}}
+</style>
+</head>
+<body>
+<header>
+ <div><div class="brand">CRUZEIRO <span>MANAGER</span></div><div class="sub">PROJETO DE GESTÃO • TEMPORADA 2027</div></div>
+ <div class="pill">⚽ MODO PRESIDENTE • 2027</div>
+</header>
+<nav id="nav">
+ <button class="active" data-page="home">⌂ Visão geral</button>
+ <button data-page="market">⇄ Mercado</button>
+ <button data-page="squad">♟ Elenco</button>
+ <button data-page="stadium">▦ Estádio</button>
+ <button data-page="season">🏆 Temporada</button>
+ <button data-page="finance">R$ Finanças</button>
+ <button data-page="reports">▤ Relatórios</button>
+</nav>
+<main>
+<section id="home" class="section active">
+ <h1>Central de comando</h1>
+ <p class="muted">Bem-vindo à presidência do Cruzeiro. Todas as decisões importantes passam por você.</p>
+ <div class="grid">
+  <div class="card"><div class="muted">Orçamento de transferências</div><div class="metric green" id="budget">R$ 600 mi</div><span class="tag">Orçamento inicial</span></div>
+  <div class="card"><div class="muted">Gastos em transferências</div><div class="metric" id="spent">R$ 0</div><span class="tag">Temporada 2027</span></div>
+  <div class="card"><div class="muted">Jogadores cadastrados</div><div class="metric" id="playersCount">0</div><span class="tag">Elenco e mercado</span></div>
+  <div class="card"><div class="muted">Temporada atual</div><div class="metric gold" id="year">2027</div><span class="tag">Projeto até 2035</span></div>
+ </div>
+ <div class="layout">
+  <div class="card"><h2>Prioridades esportivas</h2>
+   <div class="player"><span>Lateral-direito</span><span class="tag green">Vitinho contratado na simulação</span></div>
+   <div class="player"><span>Zagueiro</span><span class="tag">Prioridade</span></div>
+   <div class="player"><span>Volante</span><span class="tag">Prioridade</span></div>
+   <div class="player"><span>Ponta</span><span class="tag">Prioridade</span></div>
+  </div>
+  <div class="card"><h2>Identidade do projeto</h2>
+   <p class="muted">Treinador: Artur Jorge</p>
+   <p class="muted">Objetivos: Libertadores e Mundial</p>
+   <p class="muted">Participações: você 40% · Pedrinho 50% · Associação 10%</p>
+   <div class="notice">Você é o presidente. O sistema não confirma contratações ou investimentos sem sua autorização.</div>
+  </div>
+ </div>
+</section>
+
+<section id="market" class="section">
+ <h1>Mercado de transferências</h1><p class="muted">Cadastre alvos, compare propostas e acompanhe suas negociações.</p>
+ <div class="card">
+  <h2>Pesquisar / cadastrar jogador</h2>
+  <div class="layout">
+   <div><label>Nome do jogador</label><input id="pname" placeholder="Nome completo"></div>
+   <div><label>Clube atual</label><input id="club" placeholder="Clube"></div>
+   <div><label>Posição</label><select id="position"><option>Goleiro</option><option>Lateral-direito</option><option>Lateral-esquerdo</option><option>Zagueiro</option><option>Volante</option><option>Segundo volante</option><option>Meia</option><option>Ponta-direita</option><option>Ponta-esquerda</option><option>Centroavante</option></select></div>
+   <div><label>Idade</label><input id="age" type="number" placeholder="Idade"></div>
+   <div><label>Valor de mercado (€)</label><input id="value" type="number" placeholder="Ex.: 9000000"></div>
+   <div><label>Salário mensal atual (R$)</label><input id="wage" type="number" placeholder="Se conhecido"></div>
+   <div><label>Contrato até</label><input id="contract" placeholder="Ex.: dezembro/2029"></div>
+   <div><label>Multa rescisória (R$)</label><input id="clause" type="number" placeholder="Se conhecida"></div>
+  </div>
+  <label>Fonte / observações</label><input id="source" placeholder="Link da fonte ou observação sobre os dados">
+  <button class="primary" onclick="addPlayer()">Adicionar jogador ao mercado</button>
+  <p class="muted">O cadastro é manual nesta primeira versão. Os dados não são buscados automaticamente na internet.</p>
+ </div>
+ <div class="card" style="margin-top:15px"><h2>Jogadores monitorados</h2><div id="marketList" class="muted">Nenhum jogador cadastrado ainda.</div></div>
+</section>
+
+<section id="squad" class="section">
+ <h1>Gestão do elenco</h1><p class="muted">Controle os jogadores, contratos e decisões esportivas.</p>
+ <div class="card"><h2>Adicionar jogador ao elenco</h2>
+  <label>Nome</label><input id="sname" placeholder="Nome do jogador">
+  <label>Posição</label><input id="spos" placeholder="Posição">
+  <label>Situação</label><select id="sstatus"><option>Titular</option><option>Reserva</option><option>Base</option><option>Emprestado</option></select>
+  <button class="primary" onclick="addSquad()">Cadastrar no elenco</button>
+ </div>
+ <div class="card" style="margin-top:15px"><h2>Plantel registrado</h2><div id="squadList" class="muted">Nenhum atleta cadastrado.</div></div>
+</section>
+
+<section id="stadium" class="section">
+ <h1>Estádio e infraestrutura</h1><p class="muted">Planeje a casa do Cruzeiro e os investimentos no patrimônio.</p>
+ <div class="layout">
+  <div class="card"><h2>Projetos de infraestrutura</h2>
+   <label>Projeto</label><select id="project"><option>Comprar estádio</option><option>Construir estádio próprio</option><option>Reformar estádio</option><option>Modernizar Toca da Raposa</option><option>Centro de treinamento</option><option>Ampliar categorias de base</option></select>
+   <label>Orçamento pretendido (R$)</label><input id="projectValue" type="number" placeholder="Valor estimado">
+   <button class="primary" onclick="addProject()">Registrar projeto para avaliação</button>
+  </div>
+  <div class="card"><h2>Patrimônio</h2><div class="metric gold">Em planejamento</div><p class="muted">Estádio próprio, centro de treinamento, academia, alojamento e estrutura da base.</p></div>
+ </div>
+ <div class="card" style="margin-top:15px"><h2>Projetos registrados</h2><div id="projectList" class="muted">Nenhum projeto registrado.</div></div>
+</section>
+
+<section id="season" class="section">
+ <h1>Temporadas e competições</h1><p class="muted">Avance a história do clube temporada por temporada.</p>
+ <div class="grid">
+  <div class="card"><div class="muted">Ano</div><div class="metric gold" id="seasonYear">2027</div></div>
+  <div class="card"><div class="muted">Brasileirão</div><div class="metric">—</div></div>
+  <div class="card"><div class="muted">Libertadores</div><div class="metric">—</div></div>
+  <div class="card"><div class="muted">Mundial</div><div class="metric">—</div></div>
+ </div>
+ <div class="card"><h2>Controle da temporada</h2><p class="muted">O avanço de ano é uma ação administrativa. A simulação de partidas e campeonatos será desenvolvida na próxima etapa.</p>
+ <button class="primary" onclick="advanceYear()">Avançar para próxima temporada</button>
+ <div id="seasonMessage" class="notice">Temporada 2027 em preparação.</div></div>
+</section>
+
+<section id="finance" class="section">
+ <h1>Centro financeiro</h1><p class="muted">Controle o orçamento e os compromissos financeiros.</p>
+ <div class="grid">
+  <div class="card"><div class="muted">Orçamento disponível</div><div class="metric green" id="budget2">R$ 600 mi</div></div>
+  <div class="card"><div class="muted">Transferências gastas</div><div class="metric" id="spent2">R$ 0</div></div>
+  <div class="card"><div class="muted">Compromissos salariais cadastrados</div><div class="metric" id="wagesTotal">R$ 0</div></div>
+  <div class="card"><div class="muted">Projetos de infraestrutura</div><div class="metric" id="projectsTotal">0</div></div>
+ </div>
+ <div class="card"><h2>Registrar gasto de transferência</h2>
+  <label>Descrição</label><input id="expenseName" placeholder="Ex.: contratação de jogador">
+  <label>Valor (R$)</label><input id="expenseValue" type="number" placeholder="Valor">
+  <button class="primary" onclick="addExpense()">Registrar gasto</button>
+ </div>
+ <div class="card" style="margin-top:15px"><h2>Movimentações</h2><div id="expenseList" class="muted">Nenhuma movimentação registrada.</div></div>
+</section>
+
+<section id="reports" class="section">
+ <h1>Relatórios executivos</h1><p class="muted">Acompanhe a evolução esportiva, financeira e institucional do Cruzeiro.</p>
+ <div class="grid">
+  <div class="card"><div class="muted">Jogadores monitorados</div><div class="metric" id="reportPlayers">0</div></div>
+  <div class="card"><div class="muted">Projetos</div><div class="metric" id="reportProjects">0</div></div>
+  <div class="card"><div class="muted">Gastos registrados</div><div class="metric" id="reportSpent">R$ 0</div></div>
+  <div class="card"><div class="muted">Temporada</div><div class="metric" id="reportYear">2027</div></div>
+ </div>
+ <div class="card"><h2>Relatório de gestão</h2><p class="muted">Gere um resumo dos dados registrados no seu jogo.</p>
+ <button class="primary" onclick="generateReport()">Gerar relatório</button>
+ <textarea id="reportText" rows="12" placeholder="Seu relatório aparecerá aqui..."></textarea>
+ <button class="secondary" onclick="downloadReport()">Baixar relatório TXT</button>
+ </div>
+</section>
+</main>
+<footer>CRUZEIRO MANAGER 2027 • PROJETO INDEPENDENTE DE SIMULAÇÃO • DADOS SALVOS NESTE NAVEGADOR</footer>
+<script>
+const initial={budget:600000000,spent:0,year:2027,market:[],squad:[],projects:[],expenses:[]};
+let db;
+try{db=JSON.parse(localStorage.getItem("cruzeiroManager"))||initial}catch(e){db=initial}
+function save(){localStorage.setItem("cruzeiroManager",JSON.stringify(db));render()}
+function money(n){return Number(n||0).toLocaleString("pt-BR",{style:"currency",currency:"BRL",maximumFractionDigits:0})}
+function shortMoney(n){return "R$ "+(Number(n||0)/1000000).toLocaleString("pt-BR",{maximumFractionDigits:1})+" mi"}
+function safe(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));document.querySelectorAll(".section").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.getElementById(b.dataset.page).classList.add("active");render()});
+function addPlayer(){let n=document.getElementById("pname").value.trim();if(!n)return alert("Digite o nome do jogador.");db.market.push({name:n,club:club.value,pos:position.value,age:age.value,value:value.value,wage:wage.value,contract:contract.value,clause:clause.value,source:source.value});["pname","club","age","value","wage","contract","clause","source"].forEach(id=>document.getElementById(id).value="");save()}
+function addSquad(){let n=sname.value.trim();if(!n)return alert("Digite o nome.");db.squad.push({name:n,pos:spos.value,status:sstatus.value});sname.value="";spos.value="";save()}
+function addProject(){let n=project.value;db.projects.push({name:n,value:Number(projectValue.value||0),status:"Em avaliação"});projectValue.value="";save()}
+function addExpense(){let n=expenseName.value.trim(),v=Number(expenseValue.value);if(!n||v<=0)return alert("Informe descrição e valor.");if(v>db.budget-db.spent)return alert("Orçamento insuficiente.");db.expenses.push({name:n,value:v});db.spent+=v;expenseName.value="";expenseValue.value="";save()}
+function advanceYear(){if(db.year>=2035)return alert("Você chegou ao limite inicial do projeto: 2035.");if(!confirm("Avançar para "+(db.year+1)+"?"))return;db.year++;seasonMessage.textContent="Temporada "+db.year+" iniciada. Resultados esportivos ainda precisam ser simulados.";save()}
+function generateReport(){let txt="CRUZEIRO MANAGER — RELATÓRIO DE GESTÃO\nTemporada: "+db.year+"\n\nORÇAMENTO INICIAL: "+money(db.budget)+"\nGASTOS REGISTRADOS: "+money(db.spent)+"\nSALDO: "+money(db.budget-db.spent)+"\n\nJOGADORES MONITORADOS: "+db.market.length+"\n"+db.market.map(p=>"- "+p.name+" | "+p.pos+" | "+p.club).join("\n")+"\n\nELENCO CADASTRADO: "+db.squad.length+"\n"+db.squad.map(p=>"- "+p.name+" | "+p.pos+" | "+p.status).join("\n")+"\n\nPROJETOS DE INFRAESTRUTURA: "+db.projects.length+"\n"+db.projects.map(p=>"- "+p.name+" | "+money(p.value)+" | "+p.status).join("\n")+"\n\nMOVIMENTAÇÕES FINANCEIRAS:\n"+db.expenses.map(e=>"- "+e.name+" | "+money(e.value)).join("\n")+"\n\nRelatório gerado pelo Cruzeiro Manager 2027. Dados inseridos pelo usuário.";reportText.value=txt}
+function downloadReport(){if(!reportText.value)generateReport();let a=document.createElement("a"),u=URL.createObjectURL(new Blob([reportText.value],{type:"text/plain;charset=utf-8"}));a.href=u;a.download="relatorio-cruzeiro-manager.txt";a.click();URL.revokeObjectURL(u)}
+function render(){
+let balance=db.budget-db.spent;
+["budget","budget2"].forEach(id=>document.getElementById(id).textContent=shortMoney(balance));
+["spent","spent2","reportSpent"].forEach(id=>document.getElementById(id).textContent=shortMoney(db.spent));
+playersCount.textContent=db.market.length+db.squad.length;
+year.textContent=seasonYear.textContent=reportYear.textContent=db.year;
+wagesTotal.textContent=money(db.squad.reduce((s,p)=>s+Number(p.wage||0),0));
+projectsTotal.textContent=reportProjects.textContent=db.projects.length;
+reportPlayers.textContent=db.market.length;
+marketList.innerHTML=db.market.length?db.market.map((p,i)=>`<div class="player"><div><b>${safe(p.name)}</b><div class="muted">${safe(p.pos)} · ${safe(p.club)} · ${p.age||"Idade não informada"}</div><div class="muted">Valor informado: ${p.value? "€ "+Number(p.value).toLocaleString("pt-BR"):"Não informado"} · Contrato: ${safe(p.contract||"Não informado")}</div><div class="muted">Fonte: ${safe(p.source||"Não informada")}</div></div><button class="danger" onclick="removeItem('market',${i})">Excluir</button></div>`).join(""):"Nenhum jogador cadastrado ainda.";
+squadList.innerHTML=db.squad.length?db.squad.map((p,i)=>`<div class="player"><div><b>${safe(p.name)}</b><div class="muted">${safe(p.pos)} · ${safe(p.status)}</div></div><button class="danger" onclick="removeItem('squad',${i})">Excluir</button></div>`).join(""):"Nenhum atleta cadastrado.";
+projectList.innerHTML=db.projects.length?db.projects.map(p=>`<div class="player"><div><b>${safe(p.name)}</b><div class="muted">${money(p.value)} · ${p.status}</div></div></div>`).join(""):"Nenhum projeto registrado.";
+expenseList.innerHTML=db.expenses.length?db.expenses.map(e=>`<div class="player"><b>${safe(e.name)}</b><span>${money(e.value)}</span></div>`).join(""):"Nenhuma movimentação registrada.";
+}
+function removeItem(type,i){if(confirm("Excluir este registro?")){db[type].splice(i,1);save()}}
+render();
+</script>
+</body>
+</html>
